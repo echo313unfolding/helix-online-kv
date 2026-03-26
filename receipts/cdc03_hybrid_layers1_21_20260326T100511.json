@@ -1,0 +1,169 @@
+{
+  "experiment": "cdc03_hybrid_layers1_21",
+  "config": {
+    "m": 16,
+    "top_k": 128,
+    "sink_tokens": 4,
+    "layers_tested": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "layer_0_excluded": true,
+    "reason": "Layer 0 routed to exact attention (attention sink pattern)"
+  },
+  "kv_dir": "/home/voidstr3m33/helix-substrate/kv_dump_long",
+  "prompts": [
+    "wiki_a",
+    "wiki_b",
+    "wiki_c"
+  ],
+  "n_layers_tested": 21,
+  "n_entries": 252,
+  "summary": {
+    "output_cosine_mean": 0.99972873,
+    "output_cosine_min": 0.97688761,
+    "output_cosine_max": 1.00000009,
+    "output_cosine_std": 0.00161777,
+    "coverage_mean": 0.125
+  },
+  "gates": {
+    "mean_cosine_099": {
+      "value": 0.99972873,
+      "passed": true
+    },
+    "min_cosine_095": {
+      "value": 0.97688761,
+      "passed": true
+    },
+    "overall": true
+  },
+  "worst_10": [
+    {
+      "prompt": "wiki_b",
+      "layer": 1,
+      "head": 1,
+      "seq_len": 1024,
+      "output_cosine": 0.97688761,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_a",
+      "layer": 1,
+      "head": 1,
+      "seq_len": 1024,
+      "output_cosine": 0.9924707,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_c",
+      "layer": 3,
+      "head": 3,
+      "seq_len": 1024,
+      "output_cosine": 0.99483603,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_a",
+      "layer": 3,
+      "head": 3,
+      "seq_len": 1024,
+      "output_cosine": 0.99618411,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_c",
+      "layer": 6,
+      "head": 1,
+      "seq_len": 1024,
+      "output_cosine": 0.99668688,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_b",
+      "layer": 3,
+      "head": 3,
+      "seq_len": 1024,
+      "output_cosine": 0.99685646,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_c",
+      "layer": 7,
+      "head": 0,
+      "seq_len": 1024,
+      "output_cosine": 0.99763202,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_c",
+      "layer": 1,
+      "head": 1,
+      "seq_len": 1024,
+      "output_cosine": 0.99783907,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_b",
+      "layer": 6,
+      "head": 1,
+      "seq_len": 1024,
+      "output_cosine": 0.99787635,
+      "coverage": 0.125,
+      "selected": 128
+    },
+    {
+      "prompt": "wiki_c",
+      "layer": 4,
+      "head": 2,
+      "seq_len": 1024,
+      "output_cosine": 0.99797309,
+      "coverage": 0.125,
+      "selected": 128
+    }
+  ],
+  "distribution": {
+    "[0.0000,0.9000)": 0,
+    "[0.9000,0.9500)": 0,
+    "[0.9500,0.9900)": 1,
+    "[0.9900,0.9990)": 10,
+    "[0.9990,0.9999)": 30,
+    "[0.9999,1.0001)": 211
+  },
+  "cost": {
+    "wall_time_s": 172.438,
+    "cpu_time_s": 172.34,
+    "peak_memory_mb": 68.7,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-26T10:02:18",
+    "timestamp_end": "2026-03-26T10:05:11"
+  },
+  "honest_claim": "Hybrid PQ attention (M=16, top_k=128) on layers 1-21 achieves mean output cosine 0.999729 (min 0.976888) at 12.5% coverage on real WikiText-2 KV data. Layer 0 excluded (exact_layers=[0]). V matmul is truly sparse: only selected tokens touched."
+}

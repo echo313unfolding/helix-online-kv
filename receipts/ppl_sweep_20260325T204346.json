@@ -1,0 +1,96 @@
+{
+  "experiment": "bench_ppl_sweep",
+  "phase": 3,
+  "gate": {
+    "criterion": "PPL change < 1% at cal=128, hot=256",
+    "passed": true
+  },
+  "baseline": {
+    "ppl": 9.6066,
+    "loss": 2.262454,
+    "seq_len": 187
+  },
+  "results": [
+    {
+      "ppl": 9.6066,
+      "loss": 2.262453,
+      "seq_len": 187,
+      "calibration_complete": true,
+      "config": {
+        "calibration_tokens": 64,
+        "hot_window": 64,
+        "n_clusters": 256
+      },
+      "ppl_delta_pct": 0.0
+    },
+    {
+      "ppl": 9.6066,
+      "loss": 2.262453,
+      "seq_len": 187,
+      "calibration_complete": true,
+      "config": {
+        "calibration_tokens": 64,
+        "hot_window": 128,
+        "n_clusters": 256
+      },
+      "ppl_delta_pct": 0.0
+    },
+    {
+      "ppl": 9.6066,
+      "loss": 2.262453,
+      "seq_len": 187,
+      "calibration_complete": true,
+      "config": {
+        "calibration_tokens": 64,
+        "hot_window": 256,
+        "n_clusters": 256
+      },
+      "ppl_delta_pct": 0.0
+    },
+    {
+      "ppl": 9.6066,
+      "loss": 2.262453,
+      "seq_len": 187,
+      "calibration_complete": true,
+      "config": {
+        "calibration_tokens": 128,
+        "hot_window": 64,
+        "n_clusters": 256
+      },
+      "ppl_delta_pct": 0.0
+    },
+    {
+      "ppl": 9.6066,
+      "loss": 2.262453,
+      "seq_len": 187,
+      "calibration_complete": true,
+      "config": {
+        "calibration_tokens": 128,
+        "hot_window": 128,
+        "n_clusters": 256
+      },
+      "ppl_delta_pct": 0.0
+    },
+    {
+      "ppl": 9.6066,
+      "loss": 2.262453,
+      "seq_len": 187,
+      "calibration_complete": true,
+      "config": {
+        "calibration_tokens": 128,
+        "hot_window": 256,
+        "n_clusters": 256
+      },
+      "ppl_delta_pct": 0.0
+    }
+  ],
+  "cost": {
+    "wall_time_s": 607.534,
+    "cpu_time_s": 299.19,
+    "peak_memory_mb": 4841.6,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T20:33:39",
+    "timestamp_end": "2026-03-25T20:43:46"
+  }
+}

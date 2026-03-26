@@ -1,0 +1,155 @@
+{
+  "experiment": "bench_compressed_attention",
+  "phase": "CDC-01",
+  "kv_dir": "/home/voidstr3m33/helix-substrate/kv_dump",
+  "tag": "compat-check",
+  "parts_run": [
+    "a",
+    "b",
+    "c"
+  ],
+  "prompts": [
+    "cooking",
+    "history",
+    "science"
+  ],
+  "n_layers": 22,
+  "part_a_scalar_vq": {
+    "summary": {
+      "n_entries": 264,
+      "score_cosine_mean": 0.999637,
+      "score_cosine_min": 0.997269,
+      "output_cosine_mean": 0.997929,
+      "output_cosine_min": 0.968352,
+      "kl_divergence_mean": 0.008473,
+      "kl_divergence_max": 0.143241,
+      "memory_ratio_mean": 3.7
+    },
+    "gate": {
+      "criterion": "mean score cosine >= 0.999",
+      "value": 0.999637,
+      "passed": true
+    }
+  },
+  "part_b_vector_vq": {
+    "pareto": {
+      "32": {
+        "n_entries": 264,
+        "score_cosine_mean": 0.840034,
+        "score_cosine_min": 0.522631,
+        "kl_divergence_mean": 1.895348,
+        "speedup_mean": 2.34
+      },
+      "64": {
+        "n_entries": 264,
+        "score_cosine_mean": 0.90077,
+        "score_cosine_min": 0.660567,
+        "kl_divergence_mean": 1.479374,
+        "speedup_mean": 2.41
+      },
+      "128": {
+        "n_entries": 264,
+        "score_cosine_mean": 0.963621,
+        "score_cosine_min": 0.867498,
+        "kl_divergence_mean": 0.566117,
+        "speedup_mean": 2.07
+      }
+    },
+    "projected_speedup": {
+      "1024": {
+        "k=32": 21.3,
+        "k=64": 12.8,
+        "k=128": 7.1
+      },
+      "4096": {
+        "k=32": 42.7,
+        "k=64": 32.0,
+        "k=128": 21.3
+      },
+      "16384": {
+        "k=32": 56.9,
+        "k=64": 51.2,
+        "k=128": 42.7
+      },
+      "131072": {
+        "k=32": 63.0,
+        "k=64": 62.1,
+        "k=128": 60.2
+      }
+    },
+    "gate": {
+      "criterion": "mean score cosine >= 0.99 at k=128 (or max k if seq < 128)",
+      "value": 0.963621,
+      "passed": false
+    }
+  },
+  "part_c_full_pipeline": {
+    "summary": {
+      "n_entries": 264,
+      "output_cosine_mean": 0.878821,
+      "output_cosine_min": 0.131059,
+      "output_mse_mean": 0.00790047
+    },
+    "gate": {
+      "criterion": "mean output cosine >= 0.98",
+      "value": 0.878821,
+      "passed": false
+    },
+    "worst_5": [
+      {
+        "prompt": "science",
+        "layer": 4,
+        "head": 0,
+        "seq_len": 216,
+        "k": 128,
+        "output_cosine": 0.131059,
+        "output_mse": 0.00855806
+      },
+      {
+        "prompt": "science",
+        "layer": 5,
+        "head": 1,
+        "seq_len": 216,
+        "k": 128,
+        "output_cosine": 0.151195,
+        "output_mse": 0.0068012
+      },
+      {
+        "prompt": "history",
+        "layer": 14,
+        "head": 1,
+        "seq_len": 175,
+        "k": 128,
+        "output_cosine": 0.333163,
+        "output_mse": 0.04768248
+      },
+      {
+        "prompt": "cooking",
+        "layer": 14,
+        "head": 0,
+        "seq_len": 207,
+        "k": 128,
+        "output_cosine": 0.345332,
+        "output_mse": 0.00560001
+      },
+      {
+        "prompt": "history",
+        "layer": 6,
+        "head": 0,
+        "seq_len": 175,
+        "k": 128,
+        "output_cosine": 0.422952,
+        "output_mse": 0.00825986
+      }
+    ]
+  },
+  "cost": {
+    "wall_time_s": 69.795,
+    "cpu_time_s": 34.586,
+    "peak_memory_mb": 509.3,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T23:33:01",
+    "timestamp_end": "2026-03-25T23:34:10"
+  }
+}

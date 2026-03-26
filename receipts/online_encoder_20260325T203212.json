@@ -1,0 +1,53 @@
+{
+  "experiment": "bench_online_encoder",
+  "phase": 2,
+  "gate": {
+    "criterion": "per-token overhead < 5ms at all 22 layers",
+    "passed": true
+  },
+  "assignment_microbenchmark": {
+    "op": "codebook.assign",
+    "input_size": 256,
+    "n_clusters": 256,
+    "n_iterations": 10000,
+    "mean_us": 66.74,
+    "p50_us": 66.12,
+    "p99_us": 76.1,
+    "min_us": 64.61
+  },
+  "single_layer_streaming": {
+    "layer": 5,
+    "seq_len": 216,
+    "calibration_tokens": 128,
+    "streaming_tokens": 88,
+    "cal_mean_us": 2.4,
+    "cal_finalize_us": 450405.4,
+    "stream_mean_us": 139.3,
+    "stream_p50_us": 136.7,
+    "stream_p99_us": 161.1,
+    "stream_max_us": 176.5
+  },
+  "full_model_streaming": {
+    "n_layers": 22,
+    "exact_layers": [
+      0
+    ],
+    "compressed_layers": 21,
+    "seq_len": 216,
+    "streaming_tokens": 88,
+    "per_token_mean_us": 2811.4,
+    "per_token_p50_us": 2799.6,
+    "per_token_p99_us": 2905.3,
+    "per_token_max_us": 2922.1,
+    "per_token_mean_ms": 2.811
+  },
+  "cost": {
+    "wall_time_s": 11.189,
+    "cpu_time_s": 11.188,
+    "peak_memory_mb": 139.6,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T20:32:01",
+    "timestamp_end": "2026-03-25T20:32:12"
+  }
+}

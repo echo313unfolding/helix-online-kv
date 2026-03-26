@@ -1,0 +1,39 @@
+{
+  "experiment": "bench_compressed_attention",
+  "phase": "CDC-02",
+  "kv_dir": "/home/voidstr3m33/helix-substrate/kv_dump_long",
+  "tag": "cdc02-e",
+  "parts_run": [
+    "e"
+  ],
+  "prompts": [
+    "wiki_a",
+    "wiki_b",
+    "wiki_c"
+  ],
+  "n_layers": 22,
+  "part_e_fused_kernel": {
+    "summary": {
+      "n_entries": 264,
+      "cosine_gpu_mean": 0.999591,
+      "cosine_gpu_min": 0.99704,
+      "speedup_mean": 0.65,
+      "speedup_min": 0.47
+    },
+    "gate": {
+      "criterion": "fidelity >= 0.999 AND speedup > 1.5x at seq_len",
+      "fidelity_value": 0.999591,
+      "speedup_value": 0.65,
+      "passed": false
+    }
+  },
+  "cost": {
+    "wall_time_s": 243.728,
+    "cpu_time_s": 121.908,
+    "peak_memory_mb": 814.8,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T23:41:15",
+    "timestamp_end": "2026-03-25T23:45:19"
+  }
+}

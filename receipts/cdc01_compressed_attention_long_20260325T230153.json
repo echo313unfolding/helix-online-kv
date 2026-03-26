@@ -1,0 +1,161 @@
+{
+  "experiment": "bench_compressed_attention",
+  "phase": "CDC-01",
+  "kv_dir": "/home/voidstr3m33/helix-substrate/kv_dump_long",
+  "tag": "long",
+  "prompts": [
+    "wiki_a",
+    "wiki_b",
+    "wiki_c"
+  ],
+  "n_layers": 22,
+  "part_a_scalar_vq": {
+    "summary": {
+      "n_entries": 264,
+      "score_cosine_mean": 0.999521,
+      "score_cosine_min": 0.99286,
+      "output_cosine_mean": 0.997077,
+      "output_cosine_min": 0.956686,
+      "kl_divergence_mean": 0.012085,
+      "kl_divergence_max": 0.208641,
+      "memory_ratio_mean": 3.94
+    },
+    "gate": {
+      "criterion": "mean score cosine >= 0.999",
+      "value": 0.999521,
+      "passed": true
+    }
+  },
+  "part_b_vector_vq": {
+    "pareto": {
+      "32": {
+        "n_entries": 264,
+        "score_cosine_mean": 0.760999,
+        "score_cosine_min": 0.414738,
+        "kl_divergence_mean": 3.406035,
+        "speedup_mean": 1.96
+      },
+      "64": {
+        "n_entries": 264,
+        "score_cosine_mean": 0.803807,
+        "score_cosine_min": 0.508735,
+        "kl_divergence_mean": 3.047825,
+        "speedup_mean": 1.87
+      },
+      "128": {
+        "n_entries": 264,
+        "score_cosine_mean": 0.846802,
+        "score_cosine_min": 0.59845,
+        "kl_divergence_mean": 2.661982,
+        "speedup_mean": 1.74
+      },
+      "256": {
+        "n_entries": 264,
+        "score_cosine_mean": 0.896071,
+        "score_cosine_min": 0.700096,
+        "kl_divergence_mean": 1.930741,
+        "speedup_mean": 1.53
+      }
+    },
+    "projected_speedup": {
+      "1024": {
+        "k=32": 21.3,
+        "k=64": 12.8,
+        "k=128": 7.1,
+        "k=256": 3.8
+      },
+      "4096": {
+        "k=32": 42.7,
+        "k=64": 32.0,
+        "k=128": 21.3,
+        "k=256": 12.8
+      },
+      "16384": {
+        "k=32": 56.9,
+        "k=64": 51.2,
+        "k=128": 42.7,
+        "k=256": 32.0
+      },
+      "131072": {
+        "k=32": 63.0,
+        "k=64": 62.1,
+        "k=128": 60.2,
+        "k=256": 56.9
+      }
+    },
+    "gate": {
+      "criterion": "mean score cosine >= 0.99 at k=128 (or max k if seq < 128)",
+      "value": 0.846802,
+      "passed": false
+    }
+  },
+  "part_c_full_pipeline": {
+    "summary": {
+      "n_entries": 264,
+      "output_cosine_mean": 0.649446,
+      "output_cosine_min": 0.043441,
+      "output_mse_mean": 0.01816526
+    },
+    "gate": {
+      "criterion": "mean output cosine >= 0.98",
+      "value": 0.649446,
+      "passed": false
+    },
+    "worst_5": [
+      {
+        "prompt": "wiki_a",
+        "layer": 1,
+        "head": 2,
+        "seq_len": 1024,
+        "k": 128,
+        "output_cosine": 0.043441,
+        "output_mse": 0.00063965
+      },
+      {
+        "prompt": "wiki_a",
+        "layer": 21,
+        "head": 1,
+        "seq_len": 1024,
+        "k": 128,
+        "output_cosine": 0.045866,
+        "output_mse": 0.4743845
+      },
+      {
+        "prompt": "wiki_a",
+        "layer": 2,
+        "head": 3,
+        "seq_len": 1024,
+        "k": 128,
+        "output_cosine": 0.063043,
+        "output_mse": 0.00111314
+      },
+      {
+        "prompt": "wiki_a",
+        "layer": 0,
+        "head": 2,
+        "seq_len": 1024,
+        "k": 128,
+        "output_cosine": 0.079286,
+        "output_mse": 0.00092259
+      },
+      {
+        "prompt": "wiki_c",
+        "layer": 18,
+        "head": 0,
+        "seq_len": 1024,
+        "k": 128,
+        "output_cosine": 0.097857,
+        "output_mse": 0.12339985
+      }
+    ]
+  },
+  "cost": {
+    "wall_time_s": 176.219,
+    "cpu_time_s": 176.104,
+    "peak_memory_mb": 260.0,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T22:58:56",
+    "timestamp_end": "2026-03-25T23:01:53"
+  }
+}

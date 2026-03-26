@@ -1,0 +1,127 @@
+{
+  "experiment": "calibrate_codebook_generalization",
+  "phase": 1,
+  "gate": {
+    "criterion": "mean_cosine >= 0.998 at N=128 across all 22 layers",
+    "passed": true
+  },
+  "within_prompt": {
+    "science": {
+      "32": {
+        "mean_cosine": 0.998896,
+        "min_cosine": 0.992302,
+        "max_cosine": 0.999732,
+        "n_entries": 44
+      },
+      "64": {
+        "mean_cosine": 0.999149,
+        "min_cosine": 0.994586,
+        "max_cosine": 0.999791,
+        "n_entries": 44
+      },
+      "128": {
+        "mean_cosine": 0.999189,
+        "min_cosine": 0.994977,
+        "max_cosine": 0.999822,
+        "n_entries": 44
+      }
+    },
+    "history": {
+      "32": {
+        "mean_cosine": 0.998957,
+        "min_cosine": 0.99432,
+        "max_cosine": 0.999693,
+        "n_entries": 44
+      },
+      "64": {
+        "mean_cosine": 0.999146,
+        "min_cosine": 0.99476,
+        "max_cosine": 0.9998,
+        "n_entries": 44
+      },
+      "128": {
+        "mean_cosine": 0.999266,
+        "min_cosine": 0.994791,
+        "max_cosine": 0.999848,
+        "n_entries": 44
+      }
+    },
+    "cooking": {
+      "32": {
+        "mean_cosine": 0.999048,
+        "min_cosine": 0.994239,
+        "max_cosine": 0.999767,
+        "n_entries": 44
+      },
+      "64": {
+        "mean_cosine": 0.99918,
+        "min_cosine": 0.994362,
+        "max_cosine": 0.999815,
+        "n_entries": 44
+      },
+      "128": {
+        "mean_cosine": 0.999221,
+        "min_cosine": 0.994414,
+        "max_cosine": 0.999827,
+        "n_entries": 44
+      }
+    }
+  },
+  "cross_prompt": {
+    "history": {
+      "mean_cosine": 0.999194,
+      "min_cosine": 0.995239,
+      "n_entries": 44
+    },
+    "cooking": {
+      "mean_cosine": 0.99918,
+      "min_cosine": 0.994611,
+      "n_entries": 44
+    }
+  },
+  "kurtosis_correlation": {
+    "spearman_rho": -0.5498238195912614,
+    "spearman_pval": 0.00011066544447480506
+  },
+  "cost": {
+    "wall_time_s": 99.323,
+    "cpu_time_s": 98.479,
+    "peak_memory_mb": 180.9,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T20:27:56",
+    "timestamp_end": "2026-03-25T20:29:36"
+  },
+  "worst_layers": [
+    {
+      "layer": 0,
+      "kv": "v",
+      "kurtosis": 36.1,
+      "cosine": 0.994977
+    },
+    {
+      "layer": 1,
+      "kv": "v",
+      "kurtosis": 10.61,
+      "cosine": 0.997862
+    },
+    {
+      "layer": 0,
+      "kv": "k",
+      "kurtosis": 21.89,
+      "cosine": 0.998316
+    },
+    {
+      "layer": 17,
+      "kv": "v",
+      "kurtosis": 2.48,
+      "cosine": 0.998824
+    },
+    {
+      "layer": 9,
+      "kv": "v",
+      "kurtosis": 3.31,
+      "cosine": 0.998959
+    }
+  ]
+}

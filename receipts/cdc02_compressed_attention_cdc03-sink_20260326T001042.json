@@ -1,0 +1,261 @@
+{
+  "experiment": "bench_compressed_attention",
+  "phase": "CDC-03",
+  "kv_dir": "/home/voidstr3m33/helix-substrate/kv_dump_long",
+  "tag": "cdc03-sink",
+  "parts_run": [
+    "g"
+  ],
+  "prompts": [
+    "wiki_a",
+    "wiki_b",
+    "wiki_c"
+  ],
+  "n_layers": 22,
+  "part_g_hybrid_pq": {
+    "top_k_sweep": [
+      {
+        "top_k": 64,
+        "head": 0,
+        "output_cosine": 0.688874,
+        "coverage": 0.0625,
+        "time_hybrid_us": 489.95,
+        "time_standard_us": 133.56,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 64,
+        "head": 1,
+        "output_cosine": -0.58455,
+        "coverage": 0.0625,
+        "time_hybrid_us": 550.34,
+        "time_standard_us": 134.71,
+        "speedup": 0.24
+      },
+      {
+        "top_k": 64,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.0625,
+        "time_hybrid_us": 482.33,
+        "time_standard_us": 132.49,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 64,
+        "head": 3,
+        "output_cosine": 0.81286,
+        "coverage": 0.0625,
+        "time_hybrid_us": 475.72,
+        "time_standard_us": 132.34,
+        "speedup": 0.28
+      },
+      {
+        "top_k": 128,
+        "head": 0,
+        "output_cosine": 0.851802,
+        "coverage": 0.125,
+        "time_hybrid_us": 498.01,
+        "time_standard_us": 134.43,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 128,
+        "head": 1,
+        "output_cosine": -0.514167,
+        "coverage": 0.125,
+        "time_hybrid_us": 495.47,
+        "time_standard_us": 130.79,
+        "speedup": 0.26
+      },
+      {
+        "top_k": 128,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.125,
+        "time_hybrid_us": 489.63,
+        "time_standard_us": 132.12,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 128,
+        "head": 3,
+        "output_cosine": 0.857027,
+        "coverage": 0.125,
+        "time_hybrid_us": 498.18,
+        "time_standard_us": 133.79,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 256,
+        "head": 0,
+        "output_cosine": 0.960748,
+        "coverage": 0.25,
+        "time_hybrid_us": 603.02,
+        "time_standard_us": 134.83,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 256,
+        "head": 1,
+        "output_cosine": -0.164056,
+        "coverage": 0.25,
+        "time_hybrid_us": 582.13,
+        "time_standard_us": 133.9,
+        "speedup": 0.23
+      },
+      {
+        "top_k": 256,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.25,
+        "time_hybrid_us": 503.6,
+        "time_standard_us": 133.16,
+        "speedup": 0.26
+      },
+      {
+        "top_k": 256,
+        "head": 3,
+        "output_cosine": 0.912024,
+        "coverage": 0.25,
+        "time_hybrid_us": 516.83,
+        "time_standard_us": 139.86,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 512,
+        "head": 0,
+        "output_cosine": 0.997854,
+        "coverage": 0.5,
+        "time_hybrid_us": 611.61,
+        "time_standard_us": 133.2,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 512,
+        "head": 1,
+        "output_cosine": 0.833852,
+        "coverage": 0.5,
+        "time_hybrid_us": 611.03,
+        "time_standard_us": 132.01,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 512,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.5,
+        "time_hybrid_us": 679.95,
+        "time_standard_us": 135.61,
+        "speedup": 0.2
+      },
+      {
+        "top_k": 512,
+        "head": 3,
+        "output_cosine": 0.979195,
+        "coverage": 0.5,
+        "time_hybrid_us": 685.13,
+        "time_standard_us": 135.19,
+        "speedup": 0.2
+      }
+    ],
+    "config": {
+      "m": 16,
+      "top_k": 256
+    },
+    "full_summary": {
+      "n_entries": 264,
+      "output_cosine_mean": 0.986425,
+      "output_cosine_min": -0.219518,
+      "score_cosine_mean": 0.987077,
+      "coverage_mean": 0.25
+    },
+    "gate": {
+      "criterion": "mean output cosine >= 0.99 at M=16, top_k=256",
+      "value": 0.986425,
+      "min_value": -0.219518,
+      "passed": false
+    },
+    "worst_5": [
+      {
+        "prompt": "wiki_b",
+        "layer": 0,
+        "head": 1,
+        "seq_len": 1024,
+        "top_k": 256,
+        "m": 16,
+        "output_cosine": -0.219518,
+        "score_cosine": 0.983822,
+        "coverage": 0.25,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 65536,
+        "compute_ratio": 0.25
+      },
+      {
+        "prompt": "wiki_a",
+        "layer": 0,
+        "head": 1,
+        "seq_len": 1024,
+        "top_k": 256,
+        "m": 16,
+        "output_cosine": -0.164056,
+        "score_cosine": 0.977705,
+        "coverage": 0.25,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 65536,
+        "compute_ratio": 0.25
+      },
+      {
+        "prompt": "wiki_c",
+        "layer": 0,
+        "head": 1,
+        "seq_len": 1024,
+        "top_k": 256,
+        "m": 16,
+        "output_cosine": 0.270612,
+        "score_cosine": 0.982814,
+        "coverage": 0.25,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 65536,
+        "compute_ratio": 0.25
+      },
+      {
+        "prompt": "wiki_b",
+        "layer": 0,
+        "head": 3,
+        "seq_len": 1024,
+        "top_k": 256,
+        "m": 16,
+        "output_cosine": 0.829119,
+        "score_cosine": 0.982922,
+        "coverage": 0.25,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 65536,
+        "compute_ratio": 0.25
+      },
+      {
+        "prompt": "wiki_a",
+        "layer": 0,
+        "head": 3,
+        "seq_len": 1024,
+        "top_k": 256,
+        "m": 16,
+        "output_cosine": 0.912024,
+        "score_cosine": 0.982447,
+        "coverage": 0.25,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 65536,
+        "compute_ratio": 0.25
+      }
+    ]
+  },
+  "cost": {
+    "wall_time_s": 458.141,
+    "cpu_time_s": 229.324,
+    "peak_memory_mb": 468.4,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-26T00:03:04",
+    "timestamp_end": "2026-03-26T00:10:42"
+  }
+}

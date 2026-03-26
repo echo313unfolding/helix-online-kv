@@ -1,0 +1,208 @@
+{
+  "experiment": "bench_tiered_memory",
+  "phase": 3,
+  "gate": {
+    "criterion": "compressed fits >= 1.5x more tokens vs vanilla at 4096 tokens",
+    "passed": true,
+    "ratio_at_4096": 1.81
+  },
+  "theoretical": {
+    "256": {
+      "seq_len": 256,
+      "hot_window": 128,
+      "vanilla_bytes": 5767168,
+      "compressed_bytes": 4433920,
+      "ratio": 1.3,
+      "savings_pct": 23.1,
+      "vanilla_mb": 5.5,
+      "compressed_mb": 4.23
+    },
+    "512": {
+      "seq_len": 512,
+      "hot_window": 128,
+      "vanilla_bytes": 11534336,
+      "compressed_bytes": 7448576,
+      "ratio": 1.55,
+      "savings_pct": 35.4,
+      "vanilla_mb": 11.0,
+      "compressed_mb": 7.1
+    },
+    "1024": {
+      "seq_len": 1024,
+      "hot_window": 128,
+      "vanilla_bytes": 23068672,
+      "compressed_bytes": 13477888,
+      "ratio": 1.71,
+      "savings_pct": 41.6,
+      "vanilla_mb": 22.0,
+      "compressed_mb": 12.85
+    },
+    "2048": {
+      "seq_len": 2048,
+      "hot_window": 128,
+      "vanilla_bytes": 46137344,
+      "compressed_bytes": 25536512,
+      "ratio": 1.81,
+      "savings_pct": 44.7,
+      "vanilla_mb": 44.0,
+      "compressed_mb": 24.35
+    },
+    "4096": {
+      "seq_len": 4096,
+      "hot_window": 128,
+      "vanilla_bytes": 92274688,
+      "compressed_bytes": 49653760,
+      "ratio": 1.86,
+      "savings_pct": 46.2,
+      "vanilla_mb": 88.0,
+      "compressed_mb": 47.35
+    },
+    "8192": {
+      "seq_len": 8192,
+      "hot_window": 128,
+      "vanilla_bytes": 184549376,
+      "compressed_bytes": 97888256,
+      "ratio": 1.89,
+      "savings_pct": 47.0,
+      "vanilla_mb": 176.0,
+      "compressed_mb": 93.35
+    },
+    "16384": {
+      "seq_len": 16384,
+      "hot_window": 128,
+      "vanilla_bytes": 369098752,
+      "compressed_bytes": 194357248,
+      "ratio": 1.9,
+      "savings_pct": 47.3,
+      "vanilla_mb": 352.0,
+      "compressed_mb": 185.35
+    }
+  },
+  "measured": {
+    "prompt": "science",
+    "seq_len": 216,
+    "n_layers": 22,
+    "exact_layers": 1,
+    "calibration_tokens": 64,
+    "hot_window": 64,
+    "codebook_bytes": 43008,
+    "index_bytes": 1634304,
+    "compressed_total_bytes": 1677312,
+    "per_compressed_layer": {
+      "1": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "2": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "3": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "4": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "5": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "6": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "7": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "8": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "9": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "10": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "11": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "12": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "13": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "14": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "15": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "16": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "17": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "18": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "19": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "20": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      },
+      "21": {
+        "codebook_bytes": 2048,
+        "index_bytes": 77824,
+        "total_bytes": 79872
+      }
+    }
+  },
+  "cost": {
+    "wall_time_s": 5.182,
+    "cpu_time_s": 5.18,
+    "peak_memory_mb": 104.3,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T20:32:13",
+    "timestamp_end": "2026-03-25T20:32:18"
+  }
+}

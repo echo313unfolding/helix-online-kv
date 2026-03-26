@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helix-online-kv"
+version = "0.1.0"
+description = "Online KV cache compression using CDNA v3 codebooks"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    { name = "voidstr3m33" }
+]
+keywords = [
+    "llm",
+    "kv-cache",
+    "compression",
+    "quantization",
+    "online",
+    "cdna",
+]
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+torch = [
+    "torch>=2.0",
+    "transformers>=4.38",
+]
+dev = [
+    "pytest>=7.0",
+]
+all = [
+    "torch>=2.0",
+    "transformers>=4.38",
+    "pytest>=7.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["helix_online_kv*"]

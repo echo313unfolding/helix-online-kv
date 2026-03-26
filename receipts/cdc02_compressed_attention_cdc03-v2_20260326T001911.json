@@ -1,0 +1,437 @@
+{
+  "experiment": "bench_compressed_attention",
+  "phase": "CDC-03",
+  "kv_dir": "/home/voidstr3m33/helix-substrate/kv_dump_long",
+  "tag": "cdc03-v2",
+  "parts_run": [
+    "g"
+  ],
+  "prompts": [
+    "wiki_a",
+    "wiki_b",
+    "wiki_c"
+  ],
+  "n_layers": 22,
+  "part_g_hybrid_pq": {
+    "top_k_sweep": [
+      {
+        "top_k": 128,
+        "layer": 0,
+        "head": 0,
+        "output_cosine": 0.851802,
+        "coverage": 0.125,
+        "time_hybrid_us": 606.77,
+        "time_standard_us": 202.88,
+        "speedup": 0.33
+      },
+      {
+        "top_k": 128,
+        "layer": 0,
+        "head": 1,
+        "output_cosine": -0.514167,
+        "coverage": 0.125,
+        "time_hybrid_us": 468.63,
+        "time_standard_us": 127.84,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 128,
+        "layer": 0,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.125,
+        "time_hybrid_us": 410.67,
+        "time_standard_us": 191.33,
+        "speedup": 0.47
+      },
+      {
+        "top_k": 128,
+        "layer": 0,
+        "head": 3,
+        "output_cosine": 0.857027,
+        "coverage": 0.125,
+        "time_hybrid_us": 484.95,
+        "time_standard_us": 195.15,
+        "speedup": 0.4
+      },
+      {
+        "top_k": 256,
+        "layer": 0,
+        "head": 0,
+        "output_cosine": 0.960748,
+        "coverage": 0.25,
+        "time_hybrid_us": 500.32,
+        "time_standard_us": 134.85,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 256,
+        "layer": 0,
+        "head": 1,
+        "output_cosine": -0.164056,
+        "coverage": 0.25,
+        "time_hybrid_us": 628.88,
+        "time_standard_us": 187.6,
+        "speedup": 0.3
+      },
+      {
+        "top_k": 256,
+        "layer": 0,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.25,
+        "time_hybrid_us": 553.63,
+        "time_standard_us": 133.82,
+        "speedup": 0.24
+      },
+      {
+        "top_k": 256,
+        "layer": 0,
+        "head": 3,
+        "output_cosine": 0.912024,
+        "coverage": 0.25,
+        "time_hybrid_us": 503.83,
+        "time_standard_us": 128.29,
+        "speedup": 0.25
+      },
+      {
+        "top_k": 512,
+        "layer": 0,
+        "head": 0,
+        "output_cosine": 0.997854,
+        "coverage": 0.5,
+        "time_hybrid_us": 587.65,
+        "time_standard_us": 131.84,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 512,
+        "layer": 0,
+        "head": 1,
+        "output_cosine": 0.833852,
+        "coverage": 0.5,
+        "time_hybrid_us": 593.33,
+        "time_standard_us": 132.76,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 512,
+        "layer": 0,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.5,
+        "time_hybrid_us": 583.41,
+        "time_standard_us": 126.72,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 512,
+        "layer": 0,
+        "head": 3,
+        "output_cosine": 0.979195,
+        "coverage": 0.5,
+        "time_hybrid_us": 596.1,
+        "time_standard_us": 128.51,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 768,
+        "layer": 0,
+        "head": 0,
+        "output_cosine": 0.999889,
+        "coverage": 0.75,
+        "time_hybrid_us": 608.61,
+        "time_standard_us": 196.01,
+        "speedup": 0.32
+      },
+      {
+        "top_k": 768,
+        "layer": 0,
+        "head": 1,
+        "output_cosine": 0.99465,
+        "coverage": 0.75,
+        "time_hybrid_us": 606.3,
+        "time_standard_us": 128.65,
+        "speedup": 0.21
+      },
+      {
+        "top_k": 768,
+        "layer": 0,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.75,
+        "time_hybrid_us": 610.63,
+        "time_standard_us": 129.85,
+        "speedup": 0.21
+      },
+      {
+        "top_k": 768,
+        "layer": 0,
+        "head": 3,
+        "output_cosine": 0.992054,
+        "coverage": 0.75,
+        "time_hybrid_us": 620.04,
+        "time_standard_us": 130.93,
+        "speedup": 0.21
+      },
+      {
+        "top_k": 128,
+        "layer": 10,
+        "head": 0,
+        "output_cosine": 0.999998,
+        "coverage": 0.125,
+        "time_hybrid_us": 483.02,
+        "time_standard_us": 129.11,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 128,
+        "layer": 10,
+        "head": 1,
+        "output_cosine": 1.0,
+        "coverage": 0.125,
+        "time_hybrid_us": 473.92,
+        "time_standard_us": 126.47,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 128,
+        "layer": 10,
+        "head": 2,
+        "output_cosine": 0.999994,
+        "coverage": 0.125,
+        "time_hybrid_us": 481.39,
+        "time_standard_us": 132.37,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 128,
+        "layer": 10,
+        "head": 3,
+        "output_cosine": 0.999999,
+        "coverage": 0.125,
+        "time_hybrid_us": 407.93,
+        "time_standard_us": 126.6,
+        "speedup": 0.31
+      },
+      {
+        "top_k": 256,
+        "layer": 10,
+        "head": 0,
+        "output_cosine": 1.0,
+        "coverage": 0.25,
+        "time_hybrid_us": 490.17,
+        "time_standard_us": 127.05,
+        "speedup": 0.26
+      },
+      {
+        "top_k": 256,
+        "layer": 10,
+        "head": 1,
+        "output_cosine": 1.0,
+        "coverage": 0.25,
+        "time_hybrid_us": 482.05,
+        "time_standard_us": 134.88,
+        "speedup": 0.28
+      },
+      {
+        "top_k": 256,
+        "layer": 10,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.25,
+        "time_hybrid_us": 490.12,
+        "time_standard_us": 132.67,
+        "speedup": 0.27
+      },
+      {
+        "top_k": 256,
+        "layer": 10,
+        "head": 3,
+        "output_cosine": 1.0,
+        "coverage": 0.25,
+        "time_hybrid_us": 552.25,
+        "time_standard_us": 129.34,
+        "speedup": 0.23
+      },
+      {
+        "top_k": 512,
+        "layer": 10,
+        "head": 0,
+        "output_cosine": 1.0,
+        "coverage": 0.5,
+        "time_hybrid_us": 522.28,
+        "time_standard_us": 191.0,
+        "speedup": 0.37
+      },
+      {
+        "top_k": 512,
+        "layer": 10,
+        "head": 1,
+        "output_cosine": 1.0,
+        "coverage": 0.5,
+        "time_hybrid_us": 589.08,
+        "time_standard_us": 132.88,
+        "speedup": 0.23
+      },
+      {
+        "top_k": 512,
+        "layer": 10,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.5,
+        "time_hybrid_us": 516.42,
+        "time_standard_us": 126.41,
+        "speedup": 0.24
+      },
+      {
+        "top_k": 512,
+        "layer": 10,
+        "head": 3,
+        "output_cosine": 1.0,
+        "coverage": 0.5,
+        "time_hybrid_us": 512.33,
+        "time_standard_us": 190.81,
+        "speedup": 0.37
+      },
+      {
+        "top_k": 768,
+        "layer": 10,
+        "head": 0,
+        "output_cosine": 1.0,
+        "coverage": 0.75,
+        "time_hybrid_us": 608.62,
+        "time_standard_us": 130.36,
+        "speedup": 0.21
+      },
+      {
+        "top_k": 768,
+        "layer": 10,
+        "head": 1,
+        "output_cosine": 1.0,
+        "coverage": 0.75,
+        "time_hybrid_us": 593.75,
+        "time_standard_us": 130.02,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 768,
+        "layer": 10,
+        "head": 2,
+        "output_cosine": 1.0,
+        "coverage": 0.75,
+        "time_hybrid_us": 592.43,
+        "time_standard_us": 131.05,
+        "speedup": 0.22
+      },
+      {
+        "top_k": 768,
+        "layer": 10,
+        "head": 3,
+        "output_cosine": 1.0,
+        "coverage": 0.75,
+        "time_hybrid_us": 601.67,
+        "time_standard_us": 130.21,
+        "speedup": 0.22
+      }
+    ],
+    "config": {
+      "m": 16,
+      "top_k": 768
+    },
+    "full_summary": {
+      "n_entries": 264,
+      "output_cosine_mean": 0.999341,
+      "output_cosine_min": 0.871754,
+      "score_cosine_mean": 0.987077,
+      "coverage_mean": 0.75
+    },
+    "gate": {
+      "criterion": "mean output cosine >= 0.99 at M=16, top_k=768",
+      "value": 0.999341,
+      "min_value": 0.871754,
+      "passed": true
+    },
+    "worst_5": [
+      {
+        "prompt": "wiki_b",
+        "layer": 0,
+        "head": 3,
+        "seq_len": 1024,
+        "top_k": 768,
+        "m": 16,
+        "output_cosine": 0.871754,
+        "score_cosine": 0.982922,
+        "coverage": 0.75,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 196608,
+        "compute_ratio": 0.75
+      },
+      {
+        "prompt": "wiki_c",
+        "layer": 0,
+        "head": 1,
+        "seq_len": 1024,
+        "top_k": 768,
+        "m": 16,
+        "output_cosine": 0.982489,
+        "score_cosine": 0.982814,
+        "coverage": 0.75,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 196608,
+        "compute_ratio": 0.75
+      },
+      {
+        "prompt": "wiki_b",
+        "layer": 0,
+        "head": 1,
+        "seq_len": 1024,
+        "top_k": 768,
+        "m": 16,
+        "output_cosine": 0.986914,
+        "score_cosine": 0.983822,
+        "coverage": 0.75,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 196608,
+        "compute_ratio": 0.75
+      },
+      {
+        "prompt": "wiki_a",
+        "layer": 0,
+        "head": 3,
+        "seq_len": 1024,
+        "top_k": 768,
+        "m": 16,
+        "output_cosine": 0.992054,
+        "score_cosine": 0.982447,
+        "coverage": 0.75,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 196608,
+        "compute_ratio": 0.75
+      },
+      {
+        "prompt": "wiki_a",
+        "layer": 0,
+        "head": 1,
+        "seq_len": 1024,
+        "top_k": 768,
+        "m": 16,
+        "output_cosine": 0.99465,
+        "score_cosine": 0.977705,
+        "coverage": 0.75,
+        "pq_index_bytes": 16384,
+        "k_effective_bytes": 196608,
+        "compute_ratio": 0.75
+      }
+    ]
+  },
+  "cost": {
+    "wall_time_s": 429.542,
+    "cpu_time_s": 214.792,
+    "peak_memory_mb": 467.5,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-26T00:12:02",
+    "timestamp_end": "2026-03-26T00:19:11"
+  }
+}

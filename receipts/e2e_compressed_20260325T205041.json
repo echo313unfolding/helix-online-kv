@@ -1,0 +1,63 @@
+{
+  "experiment": "e2e_compressed_generation",
+  "phase": 4,
+  "gates": {
+    "ppl_under_2pct": {
+      "passed": true,
+      "delta_pct": 0.7651
+    },
+    "fits_4gb": {
+      "passed": true,
+      "vram_peak_mb": 1328.6
+    }
+  },
+  "overall_pass": true,
+  "baseline": {
+    "ppl": 9.6066,
+    "loss": 2.262453,
+    "seq_len": 187,
+    "label": "dense+vanilla"
+  },
+  "dense_compressed_kv": {
+    "ppl": 9.6066,
+    "loss": 2.262453,
+    "seq_len": 187,
+    "label": "dense+compressed_kv"
+  },
+  "helix_compressed_kv": {
+    "ppl": 9.6801,
+    "loss": 2.270074,
+    "seq_len": 187,
+    "label": "helix+compressed_kv",
+    "vram_after_load_mb": 1307.9,
+    "vram_peak_mb": 1328.6,
+    "ppl_delta_pct": 0.7651,
+    "cache_memory": {
+      "exact_bytes": 8380416,
+      "compressed_bytes": 666624,
+      "total_bytes": 9047040,
+      "n_layers": 22,
+      "total_tokens": 186,
+      "calibration_complete": true
+    }
+  },
+  "config": {
+    "calibration_tokens": 128,
+    "hot_window": 256,
+    "n_clusters": 256,
+    "exact_layers": [
+      0
+    ]
+  },
+  "cost": {
+    "wall_time_s": 230.829,
+    "cpu_time_s": 112.047,
+    "peak_memory_mb": 4882.0,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-03-25T20:46:50",
+    "timestamp_end": "2026-03-25T20:50:41",
+    "device": "cuda",
+    "gpu": "Quadro T2000"
+  }
+}
