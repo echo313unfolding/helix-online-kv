@@ -1,3 +1,22 @@
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:1a3a6b&height=200&section=header&text=helix-online-kv&fontSize=42&fontColor=58a6ff&animation=fadeIn&fontAlignY=35&desc=Online%20KV%20cache%20compression%20%2B%20compressed-domain%20attention&descSize=16&descColor=8b949e&descAlignY=55">
+  <source media="(prefers-color-scheme: light)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0:f0f6fc,100:2a6bba&height=200&section=header&text=helix-online-kv&fontSize=42&fontColor=1f2328&animation=fadeIn&fontAlignY=35&desc=Online%20KV%20cache%20compression%20%2B%20compressed-domain%20attention&descSize=16&descColor=656d76&descAlignY=55">
+  <img alt="helix-online-kv" src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:1a3a6b&height=200&section=header&text=helix-online-kv&fontSize=42&fontColor=58a6ff&animation=fadeIn&fontAlignY=35&desc=Online%20KV%20cache%20compression%20%2B%20compressed-domain%20attention&descSize=16&descColor=8b949e&descAlignY=55">
+</picture>
+
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)](https://python.org)
+[![PyTorch 2.0+](https://img.shields.io/badge/pytorch-2.0%2B-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org)
+[![License](https://img.shields.io/badge/license-Echo%20Labs-green)](LICENSE)
+[![1.9x Memory](https://img.shields.io/badge/memory-1.9x%20savings-brightgreen)]()
+[![CDC-03](https://img.shields.io/badge/attention-87.5%25%20sparse-blueviolet)]()
+
+**Fit codebooks on 128 tokens, compress the rest in real time. 1.9x more context in the same VRAM.**
+**CDC-03 skips 87.5% of tokens per layer at cos=0.9997 fidelity.**
+
+</div>
+
 # helix-online-kv
 
 Online KV cache compression using learned VQ codebooks. Fit codebooks on the first 128 tokens, then VQ-assign all subsequent KV entries in real time. 1.9x more tokens fit in the same VRAM. Compressed-domain attention (CDC-03) skips 87.5% of tokens per layer.
@@ -319,3 +338,7 @@ If you use helix-online-kv in research, please cite:
   url = {https://github.com/echo313unfolding/helix-online-kv}
 }
 ```
+
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:1a3a6b&height=100&section=footer" width="100%">
+</div>
