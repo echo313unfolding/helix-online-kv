@@ -2,7 +2,7 @@
 
 Online KV cache compression using learned VQ codebooks. Fit codebooks on the first 128 tokens, then VQ-assign all subsequent KV entries in real time. 1.9x more tokens fit in the same VRAM. Compressed-domain attention (CDC-03) skips 87.5% of tokens per layer.
 
-Same codec family as [helix-substrate](https://github.com/voidstr3m33/helix-substrate) weight compression — codebook + uint8 indices — applied to activations instead of weights.
+Same codec family as [helix-substrate](https://github.com/echo313unfolding/helix-substrate) weight compression — codebook + uint8 indices — applied to activations instead of weights.
 
 ```bash
 pip install helix-online-kv[torch]
@@ -288,11 +288,11 @@ helix-online-kv/
 
 ## Companion projects
 
-### [helix-substrate](https://github.com/voidstr3m33/helix-substrate)
+### [helix-substrate](https://github.com/echo313unfolding/helix-substrate)
 
 Calibration-free weight compression. 4x smaller weights with <1% quality loss. Same VQ codec, applied to model parameters instead of activations. HelixLinear is the drop-in nn.Linear replacement.
 
-### [echo_runtime](https://github.com/voidstr3m33/echo-runtime)
+### [echo_runtime](https://github.com/echo313unfolding/echo_runtime)
 
 Unified inference runtime wiring HelixLinear + CompressedKVCache + CDC-03 into one forward pass. 155 compressed weight modules + 22-layer KV cache + 21 hybrid attention layers. 1326 MB on Quadro T2000.
 
@@ -316,6 +316,6 @@ If you use helix-online-kv in research, please cite:
   author = {Josh (voidstr3m33)},
   title = {helix-online-kv: Online KV cache compression with compressed-domain attention},
   year = {2026},
-  url = {https://github.com/voidstr3m33/helix-online-kv}
+  url = {https://github.com/echo313unfolding/helix-online-kv}
 }
 ```
