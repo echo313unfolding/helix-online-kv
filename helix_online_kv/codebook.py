@@ -175,6 +175,27 @@ class OnlineCodebook:
         self._centroids = new_centroids
         return True
 
+    def state_dict(self) -> dict:
+        """Export codebook state for serialization."""
+        return {
+            "centroids": self._centroids,
+            "finalized": self._finalized,
+            "n_clusters": self.n_clusters,
+        }
+
+    def load_state_dict(self, state: dict) -> None:
+        """Restore codebook state from serialization."""
+        centroids = state["centroids"]
+        if centroids is not None:
+            # Handle torch.Tensor from save_session
+            if hasattr(centroids, "numpy"):
+                centroids = centroids.numpy()
+            self._centroids = centroids.astype(np.float32)
+        else:
+            self._centroids = None
+        self._finalized = state["finalized"]
+        self.n_clusters = state["n_clusters"]
+
     def _fit_kmeans(
         self, data: np.ndarray
     ) -> tuple[np.ndarray, np.ndarray, int]:
