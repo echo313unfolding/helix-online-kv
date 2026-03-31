@@ -70,6 +70,45 @@ class CompressedKVCache(DynamicCache):
         self._total_tokens = 0
         self._calibration_stats: list[dict] = []
 
+    # -- Cross-version DynamicCache access helpers --
+    # transformers 4.57+: self.layers[i].keys / .values (DynamicLayer objects)
+    # older transformers: self.key_cache[i] / self.value_cache[i] (tensor lists)
+
+    def _n_cached_layers(self) -> int:
+        """Number of layers stored in the DynamicCache."""
+        if hasattr(self, 'layers') and isinstance(getattr(self, 'layers', None), list):
+            return len(self.layers)
+        if hasattr(self, 'key_cache'):
+            return len(self.key_cache)
+        return len(self)
+
+    def _get_layer_kv(self, layer_idx: int):
+        """Get (key, value) tensors for a layer across transformers versions."""
+        if hasattr(self, 'layers') and isinstance(getattr(self, 'layers', None), list):
+            layer = self.layers[layer_idx]
+            if hasattr(layer, 'keys'):
+                return layer.keys, layer.values
+        if hasattr(self, 'key_cache'):
+            return self.key_cache[layer_idx], self.value_cache[layer_idx]
+        return self[layer_idx]
+
+    def _set_layer_kv(self, layer_idx: int, k: "torch.Tensor", v: "torch.Tensor"):
+        """Set (key, value) tensors for a layer across transformers versions."""
+        if hasattr(self, 'layers') and isinstance(getattr(self, 'layers', None), list):
+            layer = self.layers[layer_idx]
+            if hasattr(layer, 'keys'):
+                layer.keys = k
+                layer.values = v
+                return
+        if hasattr(self, 'key_cache'):
+            self.key_cache[layer_idx] = k
+            self.value_cache[layer_idx] = v
+            return
+        raise RuntimeError(
+            "Cannot set KV tensors: unsupported DynamicCache version. "
+            f"transformers version: {getattr(__import__('transformers'), '__version__', 'unknown')}"
+        )
+
     @property
     def total_tokens(self) -> int:
         return self._total_tokens
@@ -94,6 +133,11 @@ class CompressedKVCache(DynamicCache):
         The parent handles all storage and retrieval. We piggyback on the
         call to feed data into the codebook for calibration / assignment.
 
+        After calibration is complete and total tokens exceed hot_window,
+        old tokens are trimmed from the DynamicCache FP16 storage (they
+        remain available as compressed indices in layer_states). This is
+        where the actual memory savings come from.
+
         GPU-native: when layer_states use TorchCodebook, tensors stay on
         device -- no .cpu().numpy() round-trips.
         """
@@ -113,7 +157,7 @@ class CompressedKVCache(DynamicCache):
         seq_len = key_states.shape[2]
 
         if ls._use_torch:
-            # GPU-native path: flatten [batch, n_heads, head_dim] → [entry_size]
+            # GPU-native path: flatten [batch, n_heads, head_dim] -> [entry_size]
             # and pass torch tensors directly. No CPU round-trip.
             for t in range(seq_len):
                 k_flat = key_states[:, :, t, :].detach().float().reshape(-1)
@@ -131,19 +175,48 @@ class CompressedKVCache(DynamicCache):
                 if stats is not None:
                     self._calibration_stats.append(stats)
 
+        # Aging: trim old tokens from DynamicCache once calibration is done.
+        # After the last layer's update, check if we should demote old tokens.
+        # Old tokens' compressed indices are already stored in layer_states;
+        # keeping them in FP16 in DynamicCache wastes memory.
+        if (layer_idx == self.n_layers_expected - 1
+                and self.calibration_complete
+                and self._total_tokens > self.aging.effective_min_age):
+            self._enforce_hot_window()
+
         return k_out, v_out
 
+    def _enforce_hot_window(self):
+        """Trim DynamicCache KV tensors to keep only the hot_window recent tokens.
+
+        Tokens older than hot_window are already stored as compressed indices
+        in self.layer_states. This removes the redundant FP16 copies so that
+        memory usage actually decreases as the sequence grows.
+        """
+        hot = self.aging.effective_min_age
+        for layer_idx in range(self._n_cached_layers()):
+            k, v = self._get_layer_kv(layer_idx)
+            if k.shape[2] > hot:
+                self._set_layer_kv(
+                    layer_idx,
+                    k[:, :, -hot:, :].contiguous(),
+                    v[:, :, -hot:, :].contiguous(),
+                )
+
     def memory_report(self) -> dict:
-        """Report memory usage breakdown."""
+        """Report memory usage breakdown.
+
+        Compatible with all transformers versions via _get_layer_kv().
+        """
         exact_bytes = 0
         compressed_bytes = 0
         for ls in self.layer_states:
             mem = ls.memory_bytes()
             compressed_bytes += mem["total_bytes"]
 
-        for layer_idx in range(len(self)):
+        for layer_idx in range(self._n_cached_layers()):
             try:
-                k, v = self[layer_idx]
+                k, v = self._get_layer_kv(layer_idx)
                 exact_bytes += k.element_size() * k.nelement()
                 exact_bytes += v.element_size() * v.nelement()
             except (IndexError, AttributeError):
@@ -180,12 +253,11 @@ class CompressedKVCache(DynamicCache):
         path = Path(path)
 
         # Collect DynamicCache state (the parent's KV tensor storage).
-        # HF transformers 4.57+: DynamicCache stores layers in self.layers[]
-        # with .keys and .values attributes (DynamicLayer objects).
+        # Uses cross-version helpers for compatibility with all transformers.
         kv_tensors = {}
-        for layer_idx in range(len(self)):
+        for layer_idx in range(self._n_cached_layers()):
             try:
-                k, v = self[layer_idx]
+                k, v = self._get_layer_kv(layer_idx)
                 kv_tensors[f"key_{layer_idx}"] = k.cpu()
                 kv_tensors[f"value_{layer_idx}"] = v.cpu()
             except (IndexError, AttributeError):
