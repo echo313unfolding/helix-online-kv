@@ -1,0 +1,187 @@
+{
+  "work_order": "WO-KVCACHE-POLARQUANT-01",
+  "experiment": "polarquant_downstream_zamba2",
+  "model": "Zamba2-1.2B",
+  "mamba_scan_lite": true,
+  "n_attention_layers": 6,
+  "gate": {
+    "criterion": "K MSE improvement > 10%",
+    "layers_passing": 6,
+    "layers_total": 6
+  },
+  "results": [
+    {
+      "layer": 5,
+      "n_clusters": 256,
+      "n_test_tokens": 91,
+      "n_heads": 32,
+      "head_dim": 128,
+      "raw": {
+        "k_mse": 0.02167184092104435,
+        "v_mse": 0.000459872157080099,
+        "k_cos": 0.9962105751037598,
+        "v_cos": 0.9993220567703247
+      },
+      "polar": {
+        "k_mse": 0.0008689652313478291,
+        "v_mse": 0.00019999840878881514,
+        "k_cos": 0.9998462796211243,
+        "v_cos": 0.9997035264968872
+      },
+      "improvement": {
+        "k_mse_pct": 95.99,
+        "v_mse_pct": 56.51
+      },
+      "attention": {
+        "raw_mean": 0.6445,
+        "polar_mean": 0.9766
+      }
+    },
+    {
+      "layer": 11,
+      "n_clusters": 256,
+      "n_test_tokens": 91,
+      "n_heads": 32,
+      "head_dim": 128,
+      "raw": {
+        "k_mse": 0.014075265266001225,
+        "v_mse": 0.0005853009060956538,
+        "k_cos": 0.9969198107719421,
+        "v_cos": 0.9992943406105042
+      },
+      "polar": {
+        "k_mse": 0.0009021349833346903,
+        "v_mse": 0.00027386524016037583,
+        "k_cos": 0.9998003244400024,
+        "v_cos": 0.9996668696403503
+      },
+      "improvement": {
+        "k_mse_pct": 93.59,
+        "v_mse_pct": 53.21
+      },
+      "attention": {
+        "raw_mean": 0.6504,
+        "polar_mean": 0.9668
+      }
+    },
+    {
+      "layer": 17,
+      "n_clusters": 256,
+      "n_test_tokens": 91,
+      "n_heads": 32,
+      "head_dim": 128,
+      "raw": {
+        "k_mse": 0.014297166839241982,
+        "v_mse": 0.00032016882323659956,
+        "k_cos": 0.9970158934593201,
+        "v_cos": 0.9994043707847595
+      },
+      "polar": {
+        "k_mse": 0.0007763206958770752,
+        "v_mse": 0.0001890753337647766,
+        "k_cos": 0.9998372793197632,
+        "v_cos": 0.9996455311775208
+      },
+      "improvement": {
+        "k_mse_pct": 94.57,
+        "v_mse_pct": 40.95
+      },
+      "attention": {
+        "raw_mean": 0.7246,
+        "polar_mean": 0.9766
+      }
+    },
+    {
+      "layer": 23,
+      "n_clusters": 256,
+      "n_test_tokens": 91,
+      "n_heads": 32,
+      "head_dim": 128,
+      "raw": {
+        "k_mse": 0.013401441276073456,
+        "v_mse": 0.00025459437165409327,
+        "k_cos": 0.9972861409187317,
+        "v_cos": 0.9994339942932129
+      },
+      "polar": {
+        "k_mse": 0.0010928860865533352,
+        "v_mse": 0.0001504152751294896,
+        "k_cos": 0.9997779726982117,
+        "v_cos": 0.9996632933616638
+      },
+      "improvement": {
+        "k_mse_pct": 91.85,
+        "v_mse_pct": 40.92
+      },
+      "attention": {
+        "raw_mean": 0.7754,
+        "polar_mean": 0.9727
+      }
+    },
+    {
+      "layer": 29,
+      "n_clusters": 256,
+      "n_test_tokens": 91,
+      "n_heads": 32,
+      "head_dim": 128,
+      "raw": {
+        "k_mse": 0.007192774210125208,
+        "v_mse": 0.00036255488521419466,
+        "k_cos": 0.9974409341812134,
+        "v_cos": 0.9994497299194336
+      },
+      "polar": {
+        "k_mse": 0.0005280962795950472,
+        "v_mse": 0.00025238707894459367,
+        "k_cos": 0.9998108148574829,
+        "v_cos": 0.9996163249015808
+      },
+      "improvement": {
+        "k_mse_pct": 92.66,
+        "v_mse_pct": 30.39
+      },
+      "attention": {
+        "raw_mean": 0.7578,
+        "polar_mean": 0.9629
+      }
+    },
+    {
+      "layer": 35,
+      "n_clusters": 256,
+      "n_test_tokens": 91,
+      "n_heads": 32,
+      "head_dim": 128,
+      "raw": {
+        "k_mse": 0.0058270469307899475,
+        "v_mse": 0.0005575273535214365,
+        "k_cos": 0.9978619813919067,
+        "v_cos": 0.9993258714675903
+      },
+      "polar": {
+        "k_mse": 0.0006729936576448381,
+        "v_mse": 0.00044429657282307744,
+        "k_cos": 0.9997518658638,
+        "v_cos": 0.9994627237319946
+      },
+      "improvement": {
+        "k_mse_pct": 88.45,
+        "v_mse_pct": 20.31
+      },
+      "attention": {
+        "raw_mean": 0.7969,
+        "polar_mean": 0.9629
+      }
+    }
+  ],
+  "cost": {
+    "wall_time_s": 57.135,
+    "cpu_time_s": 57.098,
+    "peak_memory_mb": 6143.1,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-04-02T20:20:32",
+    "timestamp_end": "2026-04-02T20:21:29",
+    "device": "cuda",
+    "gpu": "Quadro T2000"
+  }
+}

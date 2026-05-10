@@ -1,0 +1,40 @@
+{
+  "wo": "WO-ROBOT-BRAIN-01",
+  "phase": 1,
+  "gate": "PASS",
+  "models": {
+    "zamba2_7b": {
+      "vram_after_mb": 5428.1,
+      "load_time_s": 16.5,
+      "helix_modules": 213
+    },
+    "qwen_coder_3b": {
+      "vram_after_mb": 8902.9,
+      "load_time_s": 5.6,
+      "helix_modules": 252
+    },
+    "clip_vit_l14": {
+      "vram_after_mb": 9429.4,
+      "load_time_s": 1.4,
+      "helix_modules": 218,
+      "device": "cuda"
+    }
+  },
+  "total_vram_mb": 9242.4,
+  "total_helix_modules": 683,
+  "shared_buffer": {
+    "after_zamba_forward": 140576446373680,
+    "after_qwen_forward": 140576446373680,
+    "after_clip_forward": 140578632519648
+  },
+  "cost": {
+    "wall_time_s": 32.58,
+    "cpu_time_s": 48.331,
+    "peak_memory_mb": 8049.3,
+    "python_version": "3.10.12",
+    "hostname": "8552b21e-f647-40e8-ab36-30dc6fb62665",
+    "timestamp_start": "2026-04-03T04:42:59",
+    "timestamp_end": "2026-04-03T04:43:32",
+    "helix_substrate_version": "0.3.0"
+  }
+}

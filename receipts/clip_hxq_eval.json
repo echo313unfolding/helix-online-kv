@@ -1,0 +1,25 @@
+{
+  "model": "/home/user/models/clip-vit-large-patch14-helix",
+  "model_name": "clip-vit-large-patch14-helix",
+  "eval_task": "cifar100_zero_shot",
+  "results": {
+    "cifar100": {
+      "top1_accuracy": 0.7275,
+      "top5_accuracy": 0.9164,
+      "num_classes": 100,
+      "num_test_images": 10000
+    }
+  },
+  "device": "cuda",
+  "vram_peak_mb": 2266.0,
+  "cost": {
+    "wall_time_s": 128.784,
+    "cpu_time_s": 134.303,
+    "peak_memory_mb": 2248.0,
+    "python_version": "3.10.12",
+    "hostname": "8552b21e-f647-40e8-ab36-30dc6fb62665",
+    "timestamp_start": "2026-04-03T03:48:10",
+    "timestamp_end": "2026-04-03T03:50:19",
+    "helix_substrate_version": "0.3.0"
+  }
+}

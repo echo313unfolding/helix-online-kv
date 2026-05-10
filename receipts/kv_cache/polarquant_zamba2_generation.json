@@ -1,0 +1,101 @@
+{
+  "work_order": "WO-KVCACHE-POLARQUANT-01",
+  "experiment": "zamba2_generation_ab_test",
+  "model": "Zamba2-1.2B",
+  "mamba_scan_lite": true,
+  "n_prompts": 10,
+  "max_new_tokens": 50,
+  "exact_matches": 10,
+  "results": [
+    {
+      "prompt": "The most important discovery in physics was",
+      "text_off": "The most important discovery in physics was made in 1905 by Albert Einstein. He discovered that light is made up of particles called photons. This discovery led to the development of quantum mechanics, which is the study of the behavior of matter and energy at the atomic and sub",
+      "text_on": "The most important discovery in physics was made in 1905 by Albert Einstein. He discovered that light is made up of particles called photons. This discovery led to the development of quantum mechanics, which is the study of the behavior of matter and energy at the atomic and sub",
+      "match": true,
+      "time_off_s": 8.15,
+      "time_on_s": 8.03
+    },
+    {
+      "prompt": "To make a perfect cup of coffee, you need to",
+      "text_off": "To make a perfect cup of coffee, you need to know the right amount of coffee to water ratio. This ratio is the most important factor in making a great cup of coffee. The ratio is the amount of coffee grounds to the amount of water used to brew the coffee. The ratio is usually expressed as",
+      "text_on": "To make a perfect cup of coffee, you need to know the right amount of coffee to water ratio. This ratio is the most important factor in making a great cup of coffee. The ratio is the amount of coffee grounds to the amount of water used to brew the coffee. The ratio is usually expressed as",
+      "match": true,
+      "time_off_s": 8.08,
+      "time_on_s": 8.14
+    },
+    {
+      "prompt": "The difference between machine learning and deep learning is",
+      "text_off": "The difference between machine learning and deep learning is that machine learning is a subset of artificial intelligence that uses algorithms to learn from data and make predictions or decisions without being explicitly programmed. Deep learning, on the other hand, is a subset of machine learning that uses neural networks with multiple layers to learn",
+      "text_on": "The difference between machine learning and deep learning is that machine learning is a subset of artificial intelligence that uses algorithms to learn from data and make predictions or decisions without being explicitly programmed. Deep learning, on the other hand, is a subset of machine learning that uses neural networks with multiple layers to learn",
+      "match": true,
+      "time_off_s": 8.09,
+      "time_on_s": 8.25
+    },
+    {
+      "prompt": "In 2025, the biggest challenge facing humanity is",
+      "text_off": "In 2025, the biggest challenge facing humanity is the need to feed a growing population. The world\u2019s population is expected to reach 9.7 billion by 2050, and the demand for food will increase by 50%. This means that we need to produce more food",
+      "text_on": "In 2025, the biggest challenge facing humanity is the need to feed a growing population. The world\u2019s population is expected to reach 9.7 billion by 2050, and the demand for food will increase by 50%. This means that we need to produce more food",
+      "match": true,
+      "time_off_s": 8.77,
+      "time_on_s": 9.28
+    },
+    {
+      "prompt": "A good software engineer should always",
+      "text_off": "A good software engineer should always be able to write code that is easy to read and understand. This is especially true when it comes to writing code that is used by other developers.\nOne of the most important things that a software engineer can do is to write code that is easy",
+      "text_on": "A good software engineer should always be able to write code that is easy to read and understand. This is especially true when it comes to writing code that is used by other developers.\nOne of the most important things that a software engineer can do is to write code that is easy",
+      "match": true,
+      "time_off_s": 9.11,
+      "time_on_s": 9.28
+    },
+    {
+      "prompt": "The history of the internet began when",
+      "text_off": "The history of the internet began when the first computer network was created in 1969. The internet has since grown to become a global phenomenon, connecting billions of people and devices around the world.\nThe internet has revolutionized the way we communicate, access information, and",
+      "text_on": "The history of the internet began when the first computer network was created in 1969. The internet has since grown to become a global phenomenon, connecting billions of people and devices around the world.\nThe internet has revolutionized the way we communicate, access information, and",
+      "match": true,
+      "time_off_s": 8.84,
+      "time_on_s": 8.37
+    },
+    {
+      "prompt": "Climate change affects ocean ecosystems by",
+      "text_off": "Climate change affects ocean ecosystems by altering the distribution and abundance of marine species, as well as the physical and chemical properties of the ocean. These changes can have cascading effects on the entire food web, including the growth and reproduction of fish and other marine organisms.",
+      "text_on": "Climate change affects ocean ecosystems by altering the distribution and abundance of marine species, as well as the physical and chemical properties of the ocean. These changes can have cascading effects on the entire food web, including the growth and reproduction of fish and other marine organisms.",
+      "match": true,
+      "time_off_s": 8.12,
+      "time_on_s": 8.14
+    },
+    {
+      "prompt": "The key principles of good API design include",
+      "text_off": "The key principles of good API design include:\n- Keep it simple: API design should be simple and easy to understand.\n- Be consistent: Consistency is key to making an API easy to use.\n- Be clear: API design should be clear and easy to understand.",
+      "text_on": "The key principles of good API design include:\n- Keep it simple: API design should be simple and easy to understand.\n- Be consistent: Consistency is key to making an API easy to use.\n- Be clear: API design should be clear and easy to understand.",
+      "match": true,
+      "time_off_s": 8.11,
+      "time_on_s": 8.16
+    },
+    {
+      "prompt": "Quantum computing differs from classical computing because",
+      "text_off": "Quantum computing differs from classical computing because it uses quantum bits, or qubits, instead of classical bits. Qubits can exist in multiple states at once, allowing quantum computers to perform certain calculations much faster than classical computers.\n\nQuantum computing is a rapidly growing field that has",
+      "text_on": "Quantum computing differs from classical computing because it uses quantum bits, or qubits, instead of classical bits. Qubits can exist in multiple states at once, allowing quantum computers to perform certain calculations much faster than classical computers.\n\nQuantum computing is a rapidly growing field that has",
+      "match": true,
+      "time_off_s": 8.11,
+      "time_on_s": 8.14
+    },
+    {
+      "prompt": "The best way to learn a new programming language is",
+      "text_off": "The best way to learn a new programming language is to write code.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "text_on": "The best way to learn a new programming language is to write code.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "match": true,
+      "time_off_s": 8.12,
+      "time_on_s": 8.15
+    }
+  ],
+  "cost": {
+    "wall_time_s": 169.361,
+    "cpu_time_s": -0.0,
+    "peak_memory_mb": 6139.8,
+    "python_version": "3.10.12",
+    "hostname": "Echo",
+    "timestamp_start": "2026-04-02T20:32:51",
+    "timestamp_end": "2026-04-02T20:35:40",
+    "gpu": "Quadro T2000"
+  }
+}

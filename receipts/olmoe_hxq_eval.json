@@ -1,0 +1,42 @@
+{
+  "model": "/home/user/models/olmoe-1b-7b-instruct-helix",
+  "model_name": "OLMoE-1B-7B-Instruct-HXQ",
+  "tasks": [
+    "hellaswag",
+    "arc_challenge",
+    "arc_easy"
+  ],
+  "batch_size": 4,
+  "results": {
+    "arc_challenge": {
+      "acc,none": 0.507679180887372,
+      "acc_stderr,none": 0.014609667440892581,
+      "acc_norm,none": 0.5204778156996587,
+      "acc_norm_stderr,none": 0.01459913135303501
+    },
+    "arc_easy": {
+      "acc,none": 0.7811447811447811,
+      "acc_stderr,none": 0.008484229631251984,
+      "acc_norm,none": 0.7685185185185185,
+      "acc_norm_stderr,none": 0.008654729287325807
+    },
+    "hellaswag": {
+      "acc,none": 0.6046604262099183,
+      "acc_stderr,none": 0.004879242848473447,
+      "acc_norm,none": 0.7875921131248755,
+      "acc_norm_stderr,none": 0.004081760465290319
+    }
+  },
+  "vram_peak_mb": 7540.0,
+  "cost": {
+    "wall_time_s": 19811.14,
+    "cpu_time_s": 19844.004,
+    "peak_memory_mb": 14306.9,
+    "python_version": "3.10.12",
+    "hostname": "8552b21e-f647-40e8-ab36-30dc6fb62665",
+    "timestamp_start": "2026-04-02T18:10:03",
+    "timestamp_end": "2026-04-02T23:40:14",
+    "lm_eval_version": "0.4.11",
+    "helix_substrate_version": "0.3.0"
+  }
+}

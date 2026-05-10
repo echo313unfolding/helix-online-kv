@@ -14,6 +14,12 @@ import numpy as np
 
 from .codebook import OnlineCodebook
 from .config import OnlineKVConfig
+from .polar_rotation import (
+    generate_rotation_matrix,
+    infer_head_geometry,
+    polar_rotate,
+    polar_unrotate,
+)
 
 try:
     import torch
@@ -92,6 +98,16 @@ class KVLayerState:
         self._v_indices: list = []
         self._tokens_seen = 0
 
+        # PolarQuant rotation (lazy-init on first feed_token)
+        self._polar_Q: np.ndarray | None = None
+        self._polar_n_heads: int = 0
+        if config.polar_rotation and not self.is_exact:
+            self._polar_seed = config.polar_seed + layer_idx
+            self._polar_n_heads_hint = config.n_heads  # 0 = auto-infer
+        else:
+            self._polar_seed = 0
+            self._polar_n_heads_hint = 0
+
     @property
     def tokens_seen(self) -> int:
         return self._tokens_seen
@@ -130,6 +146,18 @@ class KVLayerState:
 
         if self.phase == LayerPhase.EXACT:
             return None
+
+        # Lazy-init PolarQuant rotation on first token
+        if self.config.polar_rotation and self._polar_Q is None:
+            entry_size = k_values.shape[0] if hasattr(k_values, 'shape') else len(k_values)
+            n_heads, head_dim = infer_head_geometry(entry_size, self._polar_n_heads_hint)
+            self._polar_n_heads = n_heads
+            self._polar_Q = generate_rotation_matrix(head_dim, self._polar_seed)
+
+        # Apply rotation before codebook (spreads outlier energy)
+        if self._polar_Q is not None:
+            k_values = polar_rotate(k_values, self._polar_Q, self._polar_n_heads)
+            v_values = polar_rotate(v_values, self._polar_Q, self._polar_n_heads)
 
         if self.phase == LayerPhase.CALIBRATING:
             self.k_codebook.feed_calibration(k_values)
@@ -191,6 +219,9 @@ class KVLayerState:
             raise RuntimeError("Codebook not finalized yet")
         k = self.k_codebook.decode(self._k_indices[token_offset])
         v = self.v_codebook.decode(self._v_indices[token_offset])
+        if self._polar_Q is not None:
+            k = polar_unrotate(k, self._polar_Q, self._polar_n_heads)
+            v = polar_unrotate(v, self._polar_Q, self._polar_n_heads)
         return k, v
 
     def get_all_compressed_k(self):
@@ -203,10 +234,14 @@ class KVLayerState:
             return None
         if self._use_torch:
             indices = torch.stack(self._k_indices)
-            return self.k_codebook.decode(indices)
+            decoded = self.k_codebook.decode(indices)
         else:
             indices = np.stack(self._k_indices)
-            return self.k_codebook.decode(indices)
+            decoded = self.k_codebook.decode(indices)
+        if self._polar_Q is not None:
+            for i in range(decoded.shape[0]):
+                decoded[i] = polar_unrotate(decoded[i], self._polar_Q, self._polar_n_heads)
+        return decoded
 
     def get_all_compressed_v(self):
         """Decode all compressed V values.
@@ -218,10 +253,14 @@ class KVLayerState:
             return None
         if self._use_torch:
             indices = torch.stack(self._v_indices)
-            return self.v_codebook.decode(indices)
+            decoded = self.v_codebook.decode(indices)
         else:
             indices = np.stack(self._v_indices)
-            return self.v_codebook.decode(indices)
+            decoded = self.v_codebook.decode(indices)
+        if self._polar_Q is not None:
+            for i in range(decoded.shape[0]):
+                decoded[i] = polar_unrotate(decoded[i], self._polar_Q, self._polar_n_heads)
+        return decoded
 
     def memory_bytes(self) -> dict:
         """Report memory usage for this layer's compressed state."""

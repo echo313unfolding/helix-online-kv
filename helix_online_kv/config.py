@@ -28,3 +28,6 @@ class OnlineKVConfig:
     drift_threshold: float = 0.01
     drift_ema_alpha: float = 0.05
     exact_layers: list[int] = field(default_factory=lambda: [0])
+    polar_rotation: bool = True        # PolarQuant rotation before VQ (~55% K MSE reduction)
+    polar_seed: int = 42               # Base seed for deterministic rotation matrices
+    n_heads: int = 0                   # Attention heads (0 = auto-infer from entry_size)

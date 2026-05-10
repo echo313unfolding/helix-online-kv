@@ -1,0 +1,179 @@
+{
+  "wo": "WO-ROBOT-BRAIN-01",
+  "phase": "COMPLETE",
+  "gate": "PASS",
+  "smoke_tests": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0,
+    "tests": [
+      {
+        "id": 1,
+        "name": "language_gravity",
+        "lobe": "language",
+        "result": "PASS",
+        "tok_s": 4.9
+      },
+      {
+        "id": 2,
+        "name": "code_fibonacci_auto",
+        "lobe": "code",
+        "result": "PASS",
+        "tok_s": 7.6,
+        "routing": "auto"
+      },
+      {
+        "id": 3,
+        "name": "code_sort_explicit",
+        "lobe": "code",
+        "result": "PASS",
+        "tok_s": 7.6,
+        "routing": "explicit"
+      },
+      {
+        "id": 4,
+        "name": "vision_classify_blue",
+        "lobe": "vision",
+        "result": "PASS",
+        "score": 0.9887,
+        "infer_ms": 195
+      },
+      {
+        "id": 5,
+        "name": "memory_search",
+        "lobe": "memory",
+        "result": "PASS",
+        "seeds": 2,
+        "interactions": 1
+      },
+      {
+        "id": 6,
+        "name": "fgip_search",
+        "lobe": "fgip",
+        "result": "PASS",
+        "nodes": 5,
+        "edges": 5
+      },
+      {
+        "id": 7,
+        "name": "fgip_enriched_language",
+        "lobe": "language+fgip",
+        "result": "PASS",
+        "tok_s": 4.7
+      },
+      {
+        "id": 8,
+        "name": "memory_store",
+        "lobe": "memory",
+        "result": "PASS"
+      },
+      {
+        "id": 9,
+        "name": "memory_recall",
+        "lobe": "memory",
+        "result": "PASS",
+        "found": 1
+      },
+      {
+        "id": 10,
+        "name": "health_all_components",
+        "lobe": "system",
+        "result": "PASS"
+      },
+      {
+        "id": 11,
+        "name": "text_embedding",
+        "lobe": "vision",
+        "result": "PASS",
+        "dim": 768
+      },
+      {
+        "id": 12,
+        "name": "soulfile_identity",
+        "lobe": "language+soulfile",
+        "result": "PASS",
+        "identity": "Echo"
+      },
+      {
+        "id": 13,
+        "name": "multi_turn",
+        "lobe": "language",
+        "result": "PASS"
+      },
+      {
+        "id": 14,
+        "name": "models_endpoint",
+        "lobe": "system",
+        "result": "PASS",
+        "models": 3
+      },
+      {
+        "id": 15,
+        "name": "final_vram",
+        "lobe": "system",
+        "result": "PASS",
+        "vram_mib": 10328
+      }
+    ]
+  },
+  "models": {
+    "language": {
+      "name": "zamba2-7b-instruct-vq2d-helix",
+      "architecture": "Hybrid (Mamba2+Transformer)",
+      "helix_modules": 213,
+      "vram_mb": 5428,
+      "tok_s": 4.9,
+      "compression": "HXQ VQ2D (6 bits/weight)"
+    },
+    "code": {
+      "name": "qwen2.5-coder-3b-hxq",
+      "architecture": "Decoder-only Transformer",
+      "helix_modules": 252,
+      "vram_mb": 3475,
+      "tok_s": 7.6,
+      "compression": "HXQ (8 bits/weight)"
+    },
+    "vision": {
+      "name": "clip-vit-large-patch14-helix",
+      "architecture": "Dual-encoder (ViT-L/14+Text)",
+      "helix_modules": 218,
+      "vram_mb": 527,
+      "infer_ms": 195,
+      "compression": "HXQ (8 bits/weight)"
+    }
+  },
+  "components": {
+    "echo_memory": {
+      "status": "active",
+      "db": "echo_memory.sqlite"
+    },
+    "fgip": {
+      "status": "active",
+      "db": "fgip.db",
+      "nodes": 1896,
+      "edges": 3411
+    },
+    "soulfile": {
+      "status": "active",
+      "identity": "Echo",
+      "vows": [
+        "refuse_lies",
+        "remember_drift",
+        "compress_safely"
+      ]
+    }
+  },
+  "system": {
+    "total_helix_modules": 683,
+    "total_vram_mib": 10328,
+    "gpu_total_mib": 24576,
+    "vram_utilization_pct": 42.0,
+    "shared_buffer": "confirmed (class-level, one object)"
+  },
+  "cost": {
+    "python_version": "3.10.12",
+    "hostname": "8552b21e-f647-40e8-ab36-30dc6fb62665",
+    "timestamp": "2026-04-03T05:18:03",
+    "peak_memory_mb": 10.1
+  }
+}

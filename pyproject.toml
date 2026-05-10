@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "helix-online-kv"
-version = "0.1.0"
+version = "0.3.0"
 description = "Online KV cache compression using CDNA v3 codebooks"
 readme = "README.md"
 license = {text = "MIT"}
